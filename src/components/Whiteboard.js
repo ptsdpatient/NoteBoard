@@ -15,7 +15,7 @@ const Whiteboard = () => {
 
     const fetchImages = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/drawings');
+            const response = await axios.get('https://noteboard-backend.onrender.com/drawings');
             setImages(response.data);
         } catch (error) {
             console.error('Error fetching images:', error);
@@ -34,7 +34,7 @@ const Whiteboard = () => {
 
         try {
             const filename = editingImage ? editingImage.split('/').pop() : `drawing-${Date.now()}.png`;
-            const url = editingImage ? `http://localhost:5000/edit-drawing/${filename}` : 'http://localhost:5000/save-drawing';
+            const url = editingImage ? `https://noteboard-backend.onrender.com/edit-drawing/${filename}` : 'https://noteboard-backend.onrender.com/save-drawing';
 
             const response = await axios({
                 method: editingImage ? 'put' : 'post',
@@ -59,7 +59,7 @@ const Whiteboard = () => {
 
     const handleDelete = async (filename) => {
         try {
-            await axios.delete(`http://localhost:5000/drawings/${filename}`);
+            await axios.delete(`https://noteboard-backend.onrender.com/drawings/${filename}`);
             fetchImages();
         } catch (error) {
             console.error('Error deleting image:', error);
@@ -105,7 +105,7 @@ const Whiteboard = () => {
         if (!canvasRef.current) return;
 
         try {
-            const response = await axios.get(`http://localhost:5000${imagePath}`, { responseType: 'blob' });
+            const response = await axios.get(`https://noteboard-backend.onrender.com${imagePath}`, { responseType: 'blob' });
             const imageBlob = new Blob([response.data], { type: 'image/png' });
             const imageURL = URL.createObjectURL(imageBlob);
 
@@ -235,7 +235,7 @@ const Whiteboard = () => {
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     {images.map((image, index) => (
                         <div key={index} className="relative bg-white border border-gray-300 rounded-lg overflow-hidden">
-                            <img src={`http://localhost:5000${image}`} alt={`Drawing ${index}`} className="w-full h-auto object-cover" />
+                            <img src={`https://noteboard-backend.onrender.com${image}`} alt={`Drawing ${index}`} className="w-full h-auto object-cover" />
                             <div className="absolute top-2 right-2 flex space-x-2">
                                 <button
                                     onClick={() => {

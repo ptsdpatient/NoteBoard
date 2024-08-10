@@ -25,7 +25,7 @@ const PDFList = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get('http://localhost:5000/pdfs')
+    axios.get('https://noteboard-backend.onrender.com/pdfs')
       .then(response => {
         setPdfs(response.data);
         setLoading(false);
@@ -38,7 +38,7 @@ const PDFList = () => {
 
   useEffect(() => {
     if (selectedPdf) {
-      axios.get(`http://localhost:5000/notes/${selectedPdf._id}`)
+      axios.get(`https://noteboard-backend.onrender.com/notes/${selectedPdf._id}`)
         .then(response => setNotes(response.data))
         .catch(error => console.error('Error fetching notes:', error));
     }
@@ -51,7 +51,7 @@ const PDFList = () => {
 
   const handleDownload = (filePath) => {
     const link = document.createElement('a');
-    link.href = `http://localhost:5000/${filePath}`;
+    link.href = `https://noteboard-backend.onrender.com/${filePath}`;
     link.download = filePath.split('/').pop();
     document.body.appendChild(link);
     link.click();
@@ -60,7 +60,7 @@ const PDFList = () => {
 
   const handleAddNote = () => {
     if (selectedPdf && newNote) {
-      axios.post('http://localhost:5000/notes', {
+      axios.post('https://noteboard-backend.onrender.com/notes', {
         pdfId: selectedPdf._id,
         content: newNote,
       })
@@ -147,7 +147,7 @@ const PDFList = () => {
           <div className="border border-gray-300 p-4 rounded-lg shadow-lg" style={{ height: '750px' }}>
             <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
               <Viewer
-                fileUrl={`http://localhost:5000/${selectedPdf.filePath}`}
+                fileUrl={`https://noteboard-backend.onrender.com/${selectedPdf.filePath}`}
                 plugins={[defaultLayoutPluginInstance]}
               />
             </Worker>

@@ -33,7 +33,7 @@ const UploadForm = () => {
     formData.append('description', description);
 
     try {
-      await axios.post('http://localhost:5000/upload', formData, {
+      await axios.post('https://noteboard-backend.onrender.com/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
