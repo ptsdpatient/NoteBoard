@@ -145,7 +145,7 @@ const PDFList = () => {
         <div className="mt-8">
           <h2 className="text-2xl font-semibold mb-4">PDF Viewer</h2>
           <div className="border border-gray-300 p-4 rounded-lg shadow-lg" style={{ height: '750px' }}>
-            <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
+          <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js">
               <Viewer
                 fileUrl={`https://noteboard-backend.onrender.com/${selectedPdf.filePath}`}
                 plugins={[defaultLayoutPluginInstance]}
