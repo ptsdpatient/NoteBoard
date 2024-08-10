@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">NoteBoard</string>
+    <string name="title_activity_main">NoteBoard</string>
+    <string name="package_name">com.noteboard.app</string>
+    <string name="custom_url_scheme">com.noteboard.app</string>
+</resources>
